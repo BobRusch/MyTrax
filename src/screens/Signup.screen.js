@@ -1,55 +1,29 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { StyleSheet, View } from "react-native";
-import { Text, Input, Button } from "react-native-elements";
+import { NavigationEvents } from "react-navigation";
 
 import { Context as AuthContext } from "../context/Auth.context";
 
-import Spacer from "../components/Spacer.component";
+import AuthForm from "../components/AuthForm.component";
 
-export default SignupScreen = ({ navigation }) => {
-  const { state, signup } = useContext(AuthContext);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+import NavLink from "../components/NavLink.component";
+
+export default SignupScreen = () => {
+  const { state, signup, clearErrorMessage } = useContext(AuthContext);
+
   return (
     <View style={styles.container}>
-      <Spacer>
-        <Text h3>Sign Up for Trax</Text>
-      </Spacer>
-      <Input
-        label="Email"
-        value={email}
-        leftIcon={{ type: "font-awesome", name: "envelope" }}
-        onChangeText={setEmail}
+      <NavigationEvents onWillFocus={clearErrorMessage} />
+      <AuthForm
+        headerText="Sign Up for MyTrax"
+        errorMessage={state.errorMessage}
+        submitButtonText="Sign Up"
+        onSubmit={signup}
       />
-      <Spacer />
-      <Input
-        label="Password"
-        value={password}
-        secureTextEntry={true}
-        leftIcon={{ type: "font-awesome", name: "lock" }}
-        onChangeText={setPassword}
+      <NavLink
+        text="Already have an account? Sign In instead"
+        routeName="Signin"
       />
-      {state.errorMessage ? (
-        <Text style={styles.errorMessage}>{state.errorMessage}</Text>
-      ) : null}
-      <Spacer>
-        <Button
-          icon={{
-            name: "login",
-            type: "antdesign",
-            size: 25,
-            color: "black",
-          }}
-          raised={true}
-          type="outline"
-          title="Signup"
-          color="blue"
-          onPress={() => signup({ email, password })}
-        />
-      </Spacer>
-      <Spacer>
-        <Text>If have already signed up, please go to Sign In</Text>
-      </Spacer>
     </View>
   );
 };
@@ -65,11 +39,5 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     flex: 1,
     justifyContent: "center",
-  },
-  errorMessage: {
-    fontSize: 16,
-    color: "red",
-    marginLeft: 15,
-    marginTop: 15,
   },
 });
