@@ -3,6 +3,7 @@ import React, { useContext, useCallback } from "react";
 import { StyleSheet, View, SafeAreaView } from "react-native";
 import { Text, Button } from "react-native-elements";
 import { withNavigationFocus } from "react-navigation";
+import { FontAwesome } from "@expo/vector-icons";
 
 import Spacer from "../components/Spacer.component";
 import MapComponent from "../components/Map.component";
@@ -26,19 +27,15 @@ const TrackCreateScreen = ({ isFocused }) => {
   const [err] = useLocation(isFocused || recording, callback);
 
   return (
-    <SafeAreaView forceInset={{ top: "always" }} style={styles.container}>
-      <Spacer>
-        <Text h3>Create a Track</Text>
-      </Spacer>
+    <SafeAreaView forceInset={{ top: "always" }}>
+      <Text h2>Create a Track</Text>
       <MapComponent />
       {err ? <Text>Please enable location services</Text> : null}
-
-      <View style={styles.buttonContainer}>
-        <TrackForm />
-      </View>
+      <TrackForm />
     </SafeAreaView>
   );
 };
+
 export default withNavigationFocus(TrackCreateScreen);
 
 const styles = StyleSheet.create({

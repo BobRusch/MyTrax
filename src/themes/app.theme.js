@@ -15,4 +15,9 @@ export const theme = {
       color: "white",
     },
   },
+  Polyline: {
+    lineCap: "square",
+    strokeColor: "rgba(158,158,255,1.0)",
+    strokeWidth: 4,
+  },
 };

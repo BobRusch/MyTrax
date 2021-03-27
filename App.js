@@ -11,6 +11,7 @@ import TrackListScreen from "./src/screens/TrackList.screen";
 import TrackCreateScreen from "./src/screens/TrackCreate.screen";
 import ResolveAuthScreen from "./src/screens/ResolveAuth.screen";
 import { ThemeProvider } from "react-native-elements";
+import { FontAwesome, Ionicons } from "@expo/vector-icons";
 
 import { theme } from "./src/themes/app.theme";
 
@@ -20,19 +21,38 @@ import { Provider as TrackProvider } from "./src/context/Track.context";
 
 import { setNavigator } from "./src/navagationRef";
 
+const trackListFlow = createStackNavigator({
+  TrackList: TrackListScreen,
+  TrackDetail: TrackDetailScreen,
+});
+
+trackListFlow.navigationOptions = {
+  title: "Tracks",
+  tabBarIcon: <FontAwesome name="th-list" size={20} />,
+};
+
 const switchNavigator = createSwitchNavigator({
-  Auth: ResolveAuthScreen,
+  ResolveAuth: ResolveAuthScreen,
   loginFlow: createStackNavigator({
     Signup: SignupScreen,
     Signin: SigninScreen,
   }),
   mainFlow: createBottomTabNavigator({
-    trackListFlow: createStackNavigator({
-      TrackList: TrackListScreen,
-      TrackDetail: TrackDetailScreen,
-    }),
-    TrackCreate: TrackCreateScreen,
-    Account: AccountScreen,
+    trackListFlow,
+    TrackCreate: {
+      screen: TrackCreateScreen,
+      navigationOptions: {
+        title: "Add Track",
+        tabBarIcon: <FontAwesome name="plus" size={20} />,
+      },
+    },
+    Account: {
+      screen: AccountScreen,
+      navigationOptions: {
+        title: "Add Track",
+        tabBarIcon: <Ionicons name="settings" size={20} />,
+      },
+    },
   }),
 });
 
