@@ -49,7 +49,7 @@ const switchNavigator = createSwitchNavigator({
     Account: {
       screen: AccountScreen,
       navigationOptions: {
-        title: "Add Track",
+        title: "Account",
         tabBarIcon: <Ionicons name="settings" size={20} />,
       },
     },

@@ -3,9 +3,7 @@ import React, { useContext, useCallback } from "react";
 import { StyleSheet, View, SafeAreaView } from "react-native";
 import { Text, Button } from "react-native-elements";
 import { withNavigationFocus } from "react-navigation";
-import { FontAwesome } from "@expo/vector-icons";
 
-import Spacer from "../components/Spacer.component";
 import MapComponent from "../components/Map.component";
 import TrackForm from "../components/TrackForm.component";
 
