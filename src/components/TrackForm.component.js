@@ -32,20 +32,10 @@ export default TrackForm = () => {
           icon={{
             name: "recording",
             type: "ionicon",
-            size: 25,
             color: "darkred",
           }}
-          raised={true}
-          type="outline"
           title="Stop Recording"
           color="red"
-          opacity={0.3}
-          buttonStyle={{
-            backgroundColor: "#6A75FF",
-          }}
-          titleStyle={{
-            color: "white",
-          }}
           onPress={stopRecording}
         />
       ) : (
@@ -53,19 +43,8 @@ export default TrackForm = () => {
           icon={{
             name: "recording-sharp",
             type: "ionicon",
-            size: 25,
-            color: "white",
           }}
-          raised={true}
-          type="outline"
           title="Record"
-          color="white"
-          buttonStyle={{
-            backgroundColor: "#6A75FF",
-          }}
-          titleStyle={{
-            color: "white",
-          }}
           onPress={startRecording}
         />
       )}
@@ -75,19 +54,8 @@ export default TrackForm = () => {
           icon={{
             name: "save",
             type: "fontawesome",
-            size: 25,
-            color: "white",
           }}
-          raised={true}
-          type="outline"
           title="Save Track Recoding"
-          color="white"
-          buttonStyle={{
-            backgroundColor: "#6A75FF",
-          }}
-          titleStyle={{
-            color: "white",
-          }}
           onPress={saveTrack}
         />
       ) : null}

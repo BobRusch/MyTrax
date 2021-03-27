@@ -39,13 +39,8 @@ export default AuthForm = ({
           icon={{
             name: "login",
             type: "antdesign",
-            size: 25,
-            color: "black",
           }}
-          raised={true}
-          type="outline"
           title={submitButtonText}
-          color="blue"
           onPress={() => onSubmit({ email, password })}
         />
       </Spacer>

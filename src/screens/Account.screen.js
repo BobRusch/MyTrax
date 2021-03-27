@@ -19,13 +19,8 @@ export default AccountScreen = () => {
           icon={{
             name: "logout",
             type: "antdesign",
-            size: 25,
-            color: "black",
           }}
-          raised={true}
-          type="outline"
           title="Sign Out"
-          color="blue"
           onPress={() => signout()}
         />
       </Spacer>

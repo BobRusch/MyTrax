@@ -10,6 +10,9 @@ import TrackDetailScreen from "./src/screens/TrackDetail.screen";
 import TrackListScreen from "./src/screens/TrackList.screen";
 import TrackCreateScreen from "./src/screens/TrackCreate.screen";
 import ResolveAuthScreen from "./src/screens/ResolveAuth.screen";
+import { ThemeProvider } from "react-native-elements";
+
+import { theme } from "./src/themes/app.theme";
 
 import { Provider as AuthProvider } from "./src/context/Auth.context";
 import { Provider as LocationProvider } from "./src/context/location.context";
@@ -38,14 +41,16 @@ const App = createAppContainer(switchNavigator);
 export default () => {
   return (
     <AuthProvider>
-      <TrackProvider>
-        <LocationProvider>
-          <App
-            ref={(navigator) => setNavigator(navigator)}
-            style={{ backgroundColor: "aquamarine" }}
-          />
-        </LocationProvider>
-      </TrackProvider>
+      <ThemeProvider theme={theme}>
+        <TrackProvider>
+          <LocationProvider>
+            <App
+              ref={(navigator) => setNavigator(navigator)}
+              style={{ backgroundColor: "aquamarine" }}
+            />
+          </LocationProvider>
+        </TrackProvider>
+      </ThemeProvider>
     </AuthProvider>
   );
 };
