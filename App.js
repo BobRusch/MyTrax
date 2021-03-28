@@ -21,16 +21,6 @@ import { Provider as TrackProvider } from "./src/context/Track.context";
 
 import { setNavigator } from "./src/navagationRef";
 
-const trackListFlow = createStackNavigator({
-  TrackList: TrackListScreen,
-  TrackDetail: TrackDetailScreen,
-});
-
-trackListFlow.navigationOptions = {
-  title: "Tracks",
-  tabBarIcon: <FontAwesome name="th-list" size={20} />,
-};
-
 const switchNavigator = createSwitchNavigator({
   ResolveAuth: ResolveAuthScreen,
   loginFlow: createStackNavigator({
@@ -38,7 +28,18 @@ const switchNavigator = createSwitchNavigator({
     Signin: SigninScreen,
   }),
   mainFlow: createBottomTabNavigator({
-    trackListFlow,
+    trackListFlow: createStackNavigator(
+      {
+        TrackList: TrackListScreen,
+        TrackDetail: TrackDetailScreen,
+      },
+      {
+        navigationOptions: {
+          title: "Tracks",
+          tabBarIcon: <FontAwesome name="th-list" size={20} />,
+        },
+      }
+    ),
     TrackCreate: {
       screen: TrackCreateScreen,
       navigationOptions: {

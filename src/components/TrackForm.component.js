@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { StyleSheet } from "react-native";
-import { Text, Input, Button } from "react-native-elements";
+import { Input, Button } from "react-native-elements";
 
 import { Context as LocationContext } from "../context/location.context";
 
@@ -17,10 +16,8 @@ export default TrackForm = () => {
   } = useContext(LocationContext);
   const [saveTrack] = useSaveTrack();
 
-  console.log(locations.length);
-
   return (
-    <>
+    <Spacer>
       <Input
         value={name}
         label="Track Name"
@@ -59,6 +56,6 @@ export default TrackForm = () => {
           onPress={saveTrack}
         />
       ) : null}
-    </>
+    </Spacer>
   );
 };
